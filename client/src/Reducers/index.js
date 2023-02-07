@@ -3,4 +3,6 @@ import { combineReducers } from "redux";
 
 import AuthReducer from "./AuthReducer";
 
-export const reducers = combineReducers({AuthReducer })
+import PostReducer from "./PostReducer";
+
+export const reducers = combineReducers({AuthReducer, PostReducer })

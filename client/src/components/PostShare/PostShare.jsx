@@ -6,15 +6,17 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
-import {useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
+import { uploadImage, uploadPost } from "../../Actions/uploadAction";
 
 const PostShare = () => {
+	const loading = useSelector((state) => state.PostReducer.uploading);
 	const [image, setImage] = useState(null);
 	const imageRef = useRef();
+	const dispatch = useDispatch();
 
 	const desc = useRef();
 	const { user } = useSelector((state) => state.AuthReducer.authData);
-	
 
 	const onImageChange = (event) => {
 		if (event.target.files && event.target.files[0]) {
@@ -22,6 +24,11 @@ const PostShare = () => {
 
 			setImage(img);
 		}
+	};
+
+	const reset = () => {
+		setImage(null);
+		desc.current.value = "";
 	};
 
 	const handleSubmit = (e) => {
@@ -32,21 +39,24 @@ const PostShare = () => {
 			desc: desc.current.value,
 		};
 
-    if(image){
-      const data = new FormData()
-      const filename = Date.now() + image.name 
-      data.append("name", filename)
-      data.append("file", image)
-      newPost.image = filename
-      console.log(newPost);
+		if (image) {
+			const data = new FormData();
+			const filename = Date.now() + image.name;
+			data.append("name", filename);
+			data.append("file", image);
+			newPost.image = filename;
+			console.log(newPost);
 
-	  try {
-		dispatchEvent(uploadImage(data))
-	  } catch (error) {
-		console.log(error);
-	  }
+			try {
+				dispatch(uploadImage(data));
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		dispatch(uploadPost(newPost));
+		reset();
 	};
-   }
 
 	return (
 		<div className="PostShare">
@@ -86,8 +96,12 @@ const PostShare = () => {
 						<UilSchedule />
 						Schedule
 					</div>
-					<button className="button ps-button" onClick={handleSubmit}>
-						Share
+					<button
+						className="button ps-button"
+						onClick={handleSubmit}
+						disabled={loading}
+					>
+						{loading ? "Uploading..." : "Share"}
 					</button>
 					<div style={{ display: " none" }}>
 						<input
@@ -109,6 +123,5 @@ const PostShare = () => {
 		</div>
 	);
 };
-
 
 export default PostShare;
