@@ -127,3 +127,17 @@ export const getTimelinePost = async (req, res) => {
 		res.status(500).json(error);
 	}
 };
+
+
+// get an image 
+// export const getImage = async (req, res) => {
+// 	const imageName = req.params.imageName;
+
+// 		try {
+			
+// 		} catch (error) {
+			
+// 		}
+
+
+// }

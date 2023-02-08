@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/", createPost);
 router.get("/:id", getPost);
+// router.get("/asset/:imageName", getImage);
 router.put("/:id", updatePost);
 router.delete("/:id", deletePost);
 router.put("/:id/like", likePost);

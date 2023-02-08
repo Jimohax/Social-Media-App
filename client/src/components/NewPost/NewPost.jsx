@@ -26,6 +26,8 @@ const NewPost = ({data}) => {
         <div className="detail">
           <span><b>{data.name}</b></span>
           <span> {data.desc}</span>
+          {/* <span> {data.image}</span> */}
+          {console.log(data)}
         </div>
         
     </div>
