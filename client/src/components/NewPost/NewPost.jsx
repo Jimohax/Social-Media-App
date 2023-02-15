@@ -14,7 +14,9 @@ const NewPost = ({data}) => {
   const {user} = useSelector((state)=>state.AuthReducer.authData)
   return (
     <div className="NewPost">
-        <img src={data.image? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""} alt="" />
+        <img src={data.image?  process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""} alt="" />
+
+       
 
         <div className="postReact">
             <img src={data.liked? Like : NotLike} alt="" />
@@ -27,7 +29,7 @@ const NewPost = ({data}) => {
           <span><b>{data.name}</b></span>
           <span> {data.desc}</span>
           {/* <span> {data.image}</span> */}
-          {console.log(data)}
+          {console.log(data.image)}
         </div>
         
     </div>

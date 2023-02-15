@@ -14,6 +14,8 @@ const app = express();
 // To serve images
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
+
+
 // Middleware
 app.use(bodyParser.json({ limit: "100000", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "100000", extended: true }));
