@@ -18,7 +18,12 @@ const AuthReducer = (
 			};
 		case "AUTH_FAIL":
 			return { ...state, loading: false, error: true };
-		default:
+		
+		case "LOG_OUT":
+			localStorage.clear();
+			return {...state, authData: null, loading: false, error:false}
+		
+			default:
 			return state;
 	}
 };

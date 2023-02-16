@@ -14,6 +14,7 @@ const PostShare = () => {
 	const [image, setImage] = useState(null);
 	const imageRef = useRef();
 	const dispatch = useDispatch();
+	const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
 	const desc = useRef();
 	const { user } = useSelector((state) => state.AuthReducer.authData);
@@ -60,7 +61,7 @@ const PostShare = () => {
 
 	return (
 		<div className="PostShare">
-			<img src={ProfileImage} alt="" />
+			<img src={user.profilePicture? serverPublic + user.coverPicture : serverPublic + "profileimg.jpg"} alt="" />
 
 			<div>
 				<input
