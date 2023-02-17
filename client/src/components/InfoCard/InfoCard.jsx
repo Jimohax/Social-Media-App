@@ -38,7 +38,7 @@ const InfoCard = () => {
 		<div className="InfoCard">
 			<div className="InfoHead">
 				<h4>Profile Info</h4>
-				{user._id === profileUserId ? (
+				{user._id === profileUserId ? ( 
 					<div>
 						<UilPen
 							width="2rem"
@@ -48,6 +48,7 @@ const InfoCard = () => {
 						<ProfileModal
 							modalOpened={modalOpened}
 							setModalOpened={setModalOpened}
+							data = {user}
 						/>
 					</div>
 				) : (
