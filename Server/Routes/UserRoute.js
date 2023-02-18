@@ -2,6 +2,7 @@ import express from "express";
 import {
 	deleteUser,
 	followUser,
+	getAllUsers,
 	getUser,
 	unFollowUser,
 	updateUser,
@@ -14,5 +15,6 @@ router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 router.put("/:id/follow", followUser);
 router.put("/:id/unfollow", unFollowUser);
+router.get('/', getAllUsers)
 
 export default router;
