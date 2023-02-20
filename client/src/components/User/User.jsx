@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { followUser, unFollowUser } from '../../Actions/UserAction';
 
@@ -7,10 +7,15 @@ const User = ({person}) => {
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
     const dispatch = useDispatch();
-    const {user} = useSelector((state)=>state.AuthReducer.authData)
+    const {user} = useSelector((state)=>state.AuthReducer.authData);
+    const [following, setFollowing] = useState(person.followers.includes(user._id))
         
     const handleFollow = ()=>{
-        dispatch(unFollowUser(person._id, user)) 
+        following?
+        dispatch(unFollowUser(person._id, user)): 
+        dispatch(followUser(person._id, user)); 
+
+        setFollowing ((prev)=>!prev)
     }
 
   return (
@@ -22,7 +27,7 @@ const User = ({person}) => {
                             <span>{person.username}</span>
                         </div>
                     </div>
-                    <button className='button  fc-button' onClick={handleFollow} >Follow</button>
+                    <button className={following ?"button  fc-button unfollowButton": "button fc-button"} onClick={handleFollow}>{following?"Unfollow":"Follow"}</button>
                 </div>
   )
 }
