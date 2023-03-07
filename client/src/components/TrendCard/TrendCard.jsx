@@ -10,7 +10,7 @@ const TrendCard = () => {
         {TrendData.map((trend)=>{
             return (
                 <div className='trend'>
-                    <span>#{trend.name}</span>
+                    <span>#{trend.name}</span>  
                     <span> {trend.shares}k shares</span>
                 </div>
             )
