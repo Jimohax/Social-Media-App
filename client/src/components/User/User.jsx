@@ -18,6 +18,10 @@ const User = ({person}) => {
         setFollowing ((prev)=>!prev)
     }
 
+    const clicko = ()=>{
+        console.log("Hey boss");
+    }
+
   return (
     <div className="followers">
                     <div>
@@ -25,6 +29,7 @@ const User = ({person}) => {
                         <div className="name">
                             <span>{person.firstname}</span>
                             <span>{person.username}</span>
+                            <button onClick={clicko}>click</button>
                         </div>
                     </div>
                     <button className={following ?"button  fc-button unfollowButton": "button fc-button"} onClick={handleFollow}>{following?"Unfollow":"Follow"}</button>
