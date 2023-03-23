@@ -26,6 +26,7 @@ const NewPosts = () => {
             return <NewPost 
             data={post}
             id={id}
+            key={id}
             />
          })}
     </div>

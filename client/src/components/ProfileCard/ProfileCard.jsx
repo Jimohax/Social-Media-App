@@ -45,6 +45,7 @@ const ProfileCard = ({location}) => {
 				<div>
 					<div className="follow">
 						<span>{user.following.length}</span>
+						{console.log(user.following)}
 						<span>following</span>
 					</div>
 					<div className="vl"></div>
