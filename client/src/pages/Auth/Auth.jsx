@@ -51,7 +51,7 @@ const Auth = () => {
 		<div className="Auth">
 			<div className="A-left">
 				<img src={Logo} alt="" background-color="red" />
-				<div className="webName">
+				<div className="webName"> 
 					<h1>SociApp</h1>
 					<h6>Jump outside the box</h6>
 				</div>
